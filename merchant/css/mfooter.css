@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* FOOTER DESIGN */
+footer {
+    padding-top: 3rem;
+    background-color: rgb(160, 93, 65);
+    height: 40vh;
+    margin-top: 20rem;
+    width: 100vw;
+}
+
+h1 {
+    color: rgb(53, 32, 14);
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 25px;
+}
+ul {
+    list-style-type: none; 
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+hr.solid {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+.icon-list {
+    list-style-type: none; 
+}
+
+.icon-list li {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 8px;
+    color: #ffffff; 
+}
+
+.icon:hover {
+    color: #000000; 
+}
+
+/* END OF FOOTER DESIGN */

@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+  --body-font: "Poppins", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.container {
+    width: 70%;
+    height: 50vh;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    overflow: hidden; 
+    position: relative; 
+}
+
+.product-image-container {
+    width: 100%; 
+    height: 47vh;
+    position: relative;
+}
+
+.product-image {
+    margin-top: 10px;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+.product-name {
+  margin-top: 15px;
+}
+
+.product-description{
+  font-size: 13px;
+  font-weight: 50;
+  width: 400px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+#beforebtn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 7rem;
+}
+
+#btn {
+  display: flex;
+}
+
+#quantity {
+  text-align: center;
+}
+
+.product-button {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2rem;
+}
+
+hr.solid {
+  margin-top: 10px;
+  border-top: 3.5px solid #bbb;
+}
+
+hr.solid2 {
+  margin-right: 15px;
+}
+
+.date {
+  font-size: 13px;;
+}
+
+.feedback {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* BUTTON */
+
+.add-btn,
+.buy-btn {
+  align-items: center;
+  background: #FFFFFF;
+  border: 0 solid #E2E8F0;
+  box-shadow: 0 2px 1px 2px rgba(0, 0, 0, 0.1), 0 5px 6px -1px rgba(0, 5, 2, 0.06);
+  box-sizing: border-box;
+  color: #1A202C;
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 56px;
+  justify-content: center;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  padding: 24px;
+  text-decoration: none;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.add:disabled,
+.buy-btn:disabled {
+  pointer-events: none;
+}
+
+.add-btn:hover,
+.buy-btn:hover {
+  color: #fff;
+  background-color: #3F704D;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.add-btn:active,
+.buy-btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.shop {
+  width: 70%;
+  height: 25vh;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.shop .shop-image {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 155px; 
+    height: 150px;
+}
+
+.shop-detail {
+  margin-top: 55px;
+}
+
+.shop-button {
+  margin-top: 10px;
+}
+
+.feedback {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#user-profile {
+  width: 50px;
+}
+
+.user-info {
+  margin-left: 10px;
+}
+
+.more {
+  width: 80%;
+  height: 50vh;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+/* VIEW AND CHAT BTN */
+.chat-btn,
+.view-btn {
+  display: inline-block;
+  text-align: center;
+  padding: 1em 0em 1em 2em;
+  background-color: #3F704D;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px rgb(123, 123, 123);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+  transition: box-shadow 250ms, transform 250ms, filter 50ms;
+}
+
+.chat-btn:hover,
+.view-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 3px 0px black;
+}
+
+.chat-btn:active,
+.view-btn:active {
+  filter: saturate(0.75);
+}
+
+.view-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: pink;
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 250ms;
+}
+
+.chat-btn:hover::after,
+.view-btn:hover::after {
+  transform: translateX(0);
+}
+
+.bgContainer {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.bgContainer span {
+  position: relative;
+  transform: translateX(-100%);
+  transition: all 250ms;
+}
+
+.chat-btn:hover .bgContainer > span,
+.view-btn:hover .bgContainer > span {
+  transform: translateX(0);
+}
+
+.arrowContainer {
+  padding: 1em;
+  margin-inline-end: 1em;
+  border: 4px solid;
+  border-radius: 50%;
+  background-color: pink;
+  position: relative;
+  overflow: hidden;
+  transition: transform 250ms, background-color 250ms;
+  z-index: 100;
+}
+
+.arrowContainer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: yellow;
+  transform: translateX(-100%);
+  z-index: -1;
+  transition: transform 250ms ease-in-out;
+}
+
+.chat-btn:hover .arrowContainer::after,
+.view-btn:hover .arrowContainer::after {
+  transform: translateX(0);
+}
+
+.chat-btn:hover .arrowContainer,
+.view-btn:hover .arrowContainer {
+  transform: translateX(5px);
+}
+
+.chat-btn:active .arrowContainer,
+.view-btn:active .arrowContainer {
+  transform: translateX(8px);
+}
+
+.arrowContainer svg {
+  vertical-align: middle;
+}
+
+
+/* Quantity Btn */
+.quantity-btn {
+  border: none;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.quantity-btn:hover {
+  background-color: #ecebeb;
+}
+
+.qty-input {
+  display: flex;
+  align-items: center;
+}
+
+.product-qty {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+}

@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+:root{
+    --body-font: "Poppins", sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    font-family: 'Poppins';
+    overflow-x: hidden;
+    font-family: var(--body-font);
+}
+
+.container {
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.search-input {
+    margin-top: 2rem; 
+}
+
+hr.solid1 {
+    margin-top: 35px;
+}
+
+.d-flex {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.track-labels {
+    text-align: center;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-labels {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.product-detail {
+    margin-top: 10px;
+}
+
+.product-detail,
+.product-price {
+    margin-left: -130px;
+}
+
+#user-image {
+    width: 20px;
+}
+
+#product-image {
+    width: 100px;
+    height: auto;
+}
+
+hr.solid4 {
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    border: none;
+    font-size: 16px;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+.card-title{
+    margin-top: 2rem;
+}
+.form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+    margin-top: 1rem;
+    float: right;
+    width: 40vw;
+}
+.form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: black;
+}
+.form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
+}
+#search{
+    background-color: rgb(209, 206, 206);
+}
+.solid4{
+    margin-bottom: 2rem;
+}
+#cancelled{
+font-style: italic;
+color: red;
+}
+

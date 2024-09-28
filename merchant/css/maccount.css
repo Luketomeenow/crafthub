@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+:root{
+    --body-font: "Poppins", sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    overflow-x: hidden;
+    overflow: hidden;
+    font-family: var(--body-font);
+}
+#accsettings{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+
+}
+.border-start {
+    border-left: 1px solid rgba(0, 0, 0, 0.125); 
+}
+h2{
+    margin: 1.5rem;
+    text-align: center;
+}
+.mb-4{
+    text-align: center;
+    font-size: 1.2rem;
+}
+.btn-default {
+    border-color: #4E5155;
+    background  : transparent;
+    color       : #4E5155;
+}
+#uploadimgbtn{
+    margin-top: 1rem;
+}
+label.btn {
+    margin-bottom: 0;
+}
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background  : transparent;
+    color       : #26B4FF;
+}
+.btn {
+    cursor: pointer;
+}
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+.form-select {
+    margin-bottom: 15px;
+}
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+}
+.list-group-item:hover {
+    background-color: rgba(104, 102, 102, 0.1); 
+}
+
+.list-group-item.active {
+    background-color: rgba(123, 6, 6, 0.2); 
+}
+.light-style .account-settings-links .list-group-item {
+    margin-top: 1rem;
+    border-color: red!important;
+    text-align: center;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.dark-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+    color: #fff !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+#accdeletion{
+    margin: 2rem;
+}
+#submitbtn{
+    margin-top: 1rem;
+    float: right;
+}
+.text-right{
+    float: right;
+    font-size: 3rem;
+}
+#profileImage {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    #profileImage {
+        width: 128px; 
+        height: 128px;
+    }
+    .account-settings-links .list-group-item {
+        padding: 0.5rem 1rem;
+    }
+
+    .account-settings-links .list-group-item.active {
+        font-size: 1rem;
+    }
+
+    .text-right {
+        float: none;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    #accdeletion {
+        text-align: center;
+    }
+
+    #submitbtn {
+        float: right;
+        margin: 1rem auto;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .tab-content .card-body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #profileImage {
+        width: 96px; 
+        height: 96px;
+    }
+    .account-settings-links .list-group-item {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .text-right {
+        font-size: 1.5rem;
+    }
+
+    #submitbtn {
+        width: 100%;
+    }
+
+    .btn-outline-primary {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+#editbutton{
+    margin-right: 5%;
+}

@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+:root{
+    --body-font: "Poppins", sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    font-family: 'Poppins';
+    overflow-x: hidden;
+    font-family: var(--body-font);
+}
+
+.container {
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 10px;
+    height: 100vh;
+    overflow: hidden; /* Prevent contents from going outside the container */
+}
+
+.search-input {
+    margin-top: 2rem; 
+}
+
+hr.solid1 {
+    margin-top: 35px;
+}
+#user-image {
+    width: 20px;
+}
+
+#product-image {
+    width: 90px;
+    height: auto;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+hr.solid4 {
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    border: none;
+    font-size: 16px;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+.card-title{
+    margin-top: 2rem;
+}
+.form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+    margin-top: 1rem;
+    float: right;
+    width: 40vw;
+}
+.form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: black;
+}
+.form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
+}
+#search{
+    background-color: rgb(209, 206, 206);
+}
+
+.product-rating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.rating,
+.star-ratings {
+    color: rgb(255, 195, 92);
+    margin-left: 10px;
+}
+
+
+#user-profile {
+    width: 40px;
+    margin-bottom: 10px;
+}
+.customer-name {
+    font-size: 15px;
+}
+.variation {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+.buyer-img {
+    margin-right: 50px;
+}
+#buyerimg {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+}
+.order-note {
+    font-size: 15px;
+}
+.image-attachment {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Adjustments for star ratings */
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating input {
+    display: none; /* Hide the actual radio buttons */
+}
+
+.rating label {
+    font-size: 24px; /* Size of the stars */
+    color: #ccc; /* Color of inactive stars */
+    cursor: pointer;
+    padding-right: 5px; /* Adjust spacing between stars */
+}
+
+.rating label:before {
+    content: '\2605'; /* Unicode character for a star */
+}
+
+.rating input:checked ~ label {
+    color: rgb(255, 195, 92); /* Active star color */
+}
+
+.rating:hover label:before,
+.rating label:hover:before {
+    content: '\2605';
+}

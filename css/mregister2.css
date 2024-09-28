@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 2.5rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
+  --font-medium: 500;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--white-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80vw;
+  height: auto;
+  min-height: calc(85vh - 2rem);
+  position: relative;
+  background-color: hsla(0, 0%, 10%, 0.1);
+  border: 2px solid var(--white-color);
+  margin-inline: auto;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  overflow: auto;
+  padding-left: 4rem; 
+  padding-right: 4rem; 
+}
+
+/* Content1 and Content2 */
+.content1, .content2 {
+  padding: 1rem;
+  flex: 1; 
+}
+.content1 {
+  margin-right: 5rem; 
+}
+
+/* User Info */
+.user_info3 {
+  margin-top: 25px;
+}
+
+.user-input-box3 {
+  width: 100%;
+}
+
+.user-info, .address-details, .user_info3, .user_info4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-info .user-input-box, .address-details .user-input-box3, .user_info3 .user-input-box2, .user_info4 .user-input-box2 {
+  flex: 1;
+  min-width: 0; 
+}
+
+.user-info .user-input-box label,
+.address-details .user-input-box3 label,
+.user_info3 .user-input-box2 label,
+.user_info4 .user-input-box2 label {
+  display: block; 
+  margin-bottom: 0.5rem; 
+}
+
+.user-info .user-input-box,
+.address-details .user-input-box3,
+.user_info3 .user-input-box2,
+.user_info4 .user-input-box2 {
+  margin-bottom: 1rem; 
+}
+
+/* input type text */
+input[type="text"], select {
+  width: 100%; 
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  box-sizing: border-box; 
+}
+
+/* Register */
+.register__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.register__title {
+  font-size: var(--h1-font-size);
+  text-align: center;
+  padding-bottom: 6px;
+  color: var(--white-color);
+  border-bottom: solid 1px var(--white-color);
+  font-weight: var(--font-medium);
+}
+.register__check {
+  margin-top: 50px;
+}
+
+.register__button input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--white-color);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  border: none; 
+  outline: none; 
+}
+
+/* Login */
+.login__register {
+  text-align: center;
+}
+
+.login__register a {
+  color: var(--white-color);
+  font-weight: var(--font-medium);
+}
+
+.login__register a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+/* File Requirements */
+.file-upload-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px; 
+}
+.file-upload {
+  flex: 1;
+  color: white;
+}
+.file-upload label {
+  display: block;
+  margin-bottom: 5px;
+}
+.file-upload input[type="file"] {
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+.file-upload input[type="file"]::-webkit-file-upload-button {
+  background: var(--white-color); 
+  border: 1px solid #ccc; 
+  border-radius: 0.25rem; 
+  padding: 0.5rem; 
+  color: var(--black-color); 
+  font-size: var(--normal-font-size); 
+  cursor: pointer; 
+}
+.file-upload input[type="file"] {
+  color: transparent; /* Hide the text */
+
+}
+
+
+/* Modal */
+.modal-dialog {
+  top: 20px;
+  max-width: 700px;
+  height: 90vh;
+  max-height: 900px;
+  margin: auto;
+}
+
+.modal-content {
+  height: 100%;
+}
+
+.modal-title,
+.modal-body,
+.modal-footer {
+  color: var(--black-color);
+}
+
+.modal-body {
+  margin: 1rem;
+  text-align: justify;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 0;
+}
+
+
+
+/* Breakpoints */
+@media (max-width: 768px) {
+  .container {
+    width: 90vw; 
+    padding-left: 2rem; 
+    padding-right: 2rem; 
+  }
+  
+  .content1 {
+    margin-right: 2rem; 
+  }
+  
+  .content1, .content2 {
+    flex: 1 1 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95vw; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+  }
+  
+  .content1, .content2 {
+    padding: 0.5rem; 
+  }
+  
+  .content1 {
+    margin-right: 0; 
+  }
+}
+
+#pdfModal {
+  width: 100vw;
+  height: calc(100vh - 80px);
+}
+.modal{
+  height: calc(100vh - 80px);
+}
+.modal-body{
+  height: 75vh;
+}
+.pdf-preview{
+  width: 100%;
+  height: 70vh;
+  overflow: scroll;
+}

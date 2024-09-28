@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+:root{
+    --body-font: "Poppins", sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    font-family: 'Poppins';
+    overflow-x: hidden;
+    font-family: var(--body-font);
+}
+.container {
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-title {
+    display: flex;
+    align-items: center; 
+    margin-top: 15px;
+    color: rgb(0, 0, 0);
+}
+.container i {
+    margin-right: 10px;
+}
+.card {
+    border: none;
+    margin-top: 20px;
+    height: 35vh;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgb(248, 244, 225);
+}
+.card h5 {
+    margin-bottom: 20px;
+}
+
+.card i {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.card-footer {
+    margin-top: auto; 
+    align-items: flex-end; 
+    background-color: rgb(225, 172, 172);
+    color: rgb(0, 0, 0);
+    border: none;
+    font-weight: bold;
+}
+
+
+/*  icons */
+#all {
+    color: rgb(255, 155, 168);
+}
+
+#pending {
+    color: rgb(62, 142, 155);
+}
+
+#ship {
+    color: rgb(117, 117, 117);
+}
+
+#complete {
+    color: rgb(5, 146, 18);
+}
+
+#cancel {
+    color: rgb(255, 32, 78);
+}
+
+#return {
+    color: rgb(0, 34, 77);
+}

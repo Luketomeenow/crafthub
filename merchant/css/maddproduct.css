@@ -1,0 +1,477 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+    --body-font: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    overflow-x: hidden;
+    font-family: var(--body-font);
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    background-color: rgb(255, 255, 255);
+    margin: 2rem auto;
+    border-radius: 20px;
+    padding: 25px 25px 15px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row:first-of-type {
+    margin-top: 5px;
+}
+
+/* Product Image Section */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 350px;
+    padding-left: 15px;
+    margin: 0 auto;
+}
+
+.image {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.prod-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-btn {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Product Name, Stock, Category */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 100%;
+    margin-bottom: 10px;
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid grey;
+    outline: none;
+}
+
+/* Color, Size, and Price Section */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+}
+
+.input-group {
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.input-group .form-control {
+    flex: 1;
+    border-radius: 35px 35px 35px 35px;
+}
+
+.input-group .btn {
+    border-radius: 15px 15px 15px 15px ;
+    padding: 0 15px;
+
+}
+
+@media (max-width: 768px) {
+    .form-group {
+        min-width: 100%;
+    }
+
+    .input-group {
+        flex-direction: row; 
+    }
+
+    .input-group .form-control {
+        border-right: none;
+        border-radius: 15px 0 0 15px;
+    }
+
+    .input-group .btn {
+        border-radius: 0 15px 15px 0;
+        width: auto; 
+    }
+}
+
+/* Edit Product Button */
+#add_product {
+    padding: 12px 0;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.btn {
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px 15px 10px;
+    }
+
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+    }
+
+    .image {
+        width: 100%;
+        max-width: 350px;
+        height: 350px;
+    }
+
+    .form-row {
+        gap: 10px;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .col-md-4, .col-md-8 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .row:first-of-type {
+        margin-top: 2px;
+    }
+
+    .col-md-8 {
+        padding-left: 10px;
+    }
+
+    .col-md-6 {
+        margin-bottom: 1rem;
+    }
+
+    .row:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .row:nth-of-type(3) {
+        margin-top: 10px;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-row .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.col-md-6 .mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.col-md-8 .form-group {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+    padding-right: 15px; 
+}
+
+.col-md-8 .form-group label {
+    margin-bottom: 2px;
+}
+
+.col-md-8 .form-group .form-control,
+.col-md-8 .form-group .form-select {
+    margin-top: 0;
+    width: 100%; 
+}
+
+.size-price-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.size-price-container .form-control {
+    width: 45%;
+}
+
+.size-price-container .btn {
+    align-self: center;
+}
+
+.col-md-12 .form-control {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-8 .form-group {
+        max-width: 100%;
+    }
+}
+
+#image-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #888;
+    font-size: 18px;
+}
+
+/* Update and Remove Product Buttons */
+.custom-btn {
+    padding: 12px 0;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.row.mb-4 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-md-6.d-grid {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .col-md-6.d-grid {
+        margin-bottom: 10px;
+    }
+}
+
+.custom-input-group {
+    display: flex;
+    width: 100%;
+}
+
+.custom-input-group .form-control {
+    flex: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-input-group .custom-add-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    white-space: nowrap;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form-row > .form-group {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+@media (max-width: 767px) {
+    .form-row > .form-group {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Styles for meditproduct.php */
+.meditproduct2 .custom-input-group {
+    display: flex;
+    width: 100%;
+}
+
+.meditproduct2 .custom-input-group .form-control {
+    flex: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.meditproduct2 .custom-input-group .custom-add-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    white-space: nowrap;
+}
+
+.meditproduct2 .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.meditproduct2 .form-row > .form-group {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+@media (max-width: 767px) {
+    .meditproduct2 .form-row > .form-group {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.meditproduct2 .input-group-with-buttons {
+    position: relative;
+}
+
+.meditproduct2 .input-group-with-buttons .form-control {
+    padding-right: 100px;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group .btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group .btn:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group .btn:first-child:last-child {
+    border-radius: 0;
+}
+
+.meditproduct2 .input-group-with-buttons .btn-group .btn.opacity-50 {
+    opacity: 0.5;
+}
+
+.meditproduct2 .square-btn {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    line-height: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.action-btn {
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold; 
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-success.action-btn,
+.btn-danger.action-btn {
+    border-radius: 5px;
+    font-weight: bold !important; 
+}
+
+.btn-success.action-btn:hover,
+.btn-danger.action-btn:hover {
+    opacity: 0.9;
+}
+
+.btn-success.action-btn:focus,
+.btn-danger.action-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.btn.btn-success.action-btn,
+.btn.btn-danger.action-btn {
+    border-radius: 5px !important;
+    font-weight: 700 !important; 
+}

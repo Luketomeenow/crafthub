@@ -1,0 +1,171 @@
+/* Style the chat container */
+#merchant-chat-box, #customer-chat-box {
+    width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the chat messages container */
+#merchant-chat-messages, #customer-chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Style individual messages */
+#merchant-chat-messages div, #customer-chat-messages div {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+/* Style text messages */
+#merchant-chat-messages div p, #customer-chat-messages div p {
+    margin: 0;
+}
+
+/* Style for image messages */
+#merchant-chat-messages div img, #customer-chat-messages div img {
+    max-width: 100%;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Style for video messages */
+#merchant-chat-messages div video, #customer-chat-messages div video {
+    max-width: 100%;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Style the form for sending messages */
+#merchant-message-form, #customer-message-form {
+    display: flex;
+    align-items: center;
+}
+
+/* Style the message input field */
+#merchant-message-input, #customer-message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Style the file upload field */
+#merchant-media-upload, #customer-media-upload {
+    margin-right: 10px;
+}
+
+/* Style the send button */
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 500px) {
+    #merchant-chat-box, #customer-chat-box {
+        width: 100%;
+        margin: 10px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #merchant-message-input, #customer-message-input {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* General message styling */
+#merchant-chat-messages div, #customer-chat-messages div {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 60%;
+}
+
+/* Merchant's messages: Align to the left */
+.merchant-message {
+    background-color: #d1e7dd;
+    margin-left: 0;
+    text-align: left;
+}
+
+/* Customer's messages: Align to the right */
+.customer-message {
+    background-color: #f8d7da;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Style for text messages */
+.merchant-message p, .customer-message p {
+    margin: 0;
+}
+
+/* Image and video styling remains the same */
+.merchant-message img, .customer-message img,
+.merchant-message video, .customer-message video {
+    max-width: 100%;
+    border-radius: 4px;
+    display: block;
+}
+
+#merchant-chat-messages div, #customer-chat-messages div {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 60%;
+}
+
+/* Merchant's messages: Align to the left */
+.merchant-message {
+    background-color: #d1e7dd; /* Light green background for merchant */
+    margin-left: 0;
+    text-align: left;
+}
+
+/* Customer's messages: Align to the right */
+.customer-message {
+    background-color: #f8d7da; /* Light red background for customer */
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Style for text messages */
+.merchant-message p, .customer-message p {
+    margin: 0;
+}
+
+/* Image and video styling remains the same */
+.merchant-message img, .customer-message img,
+.merchant-message video, .customer-message video {
+    max-width: 100%;
+    border-radius: 4px;
+    display: block;
+}

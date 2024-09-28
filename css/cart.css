@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-attachment: fixed;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 3rem;
+    margin: 50px auto;
+    width: 70%;
+    max-width: 1200px;
+    overflow: hidden; /* Prevents content overflow */
+}
+
+#buybtn {
+    float: right;
+    width: 140px;
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 1rem; /* Provides spacing between flex items */
+}
+
+.d-flex .btn {
+    margin-left: 5px;
+}
+
+h5 {
+    color: gray;
+}
+
+hr.line {
+    border-top: 2px solid rgb(0, 0, 0);
+    margin-top: 3rem;
+}
+
+hr.line2 {
+    margin-top: 15px;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+.prod {
+    border-radius: 0;
+    margin-top: 30px;
+}
+
+.text-grey {
+    color: #a39f9f;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Provides spacing between quantity controls */
+}
+
+.minus-btn,
+.add-btn {
+    flex: 0 0 auto;
+    margin: 0 5px;
+    align-self: center;
+}
+
+.quantity {
+    margin: 5px;
+}
+
+/* Fixed size for images */
+img {
+    width: 120px; /* Set fixed width */
+    height: 90px; /* Set fixed height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 8px; /* Optional: adds rounded corners to the image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .container {
+        width: 85%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .d-flex {
+        flex-direction: column; /* Stacks items vertically on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+}

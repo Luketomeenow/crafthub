@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(rgb(226, 192, 141), rgb(223, 168, 120), rgb(160, 93, 65));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Poppins", "sans-serif";
+    overflow-x: hidden;
+}
+
+/* Container */
+.container-fluid {
+    position: relative;
+    padding: 0;
+}
+
+/* Header */
+#header-image {
+    object-fit: cover;
+    opacity: 60%;
+    width: 100%;
+    height: 40vh;
+}
+
+.merchant-info {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 10px;
+    left: 20px;
+}
+
+#merchant-image {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.merchant-name {
+    font-size: 24px;
+    margin-left: 20px;
+    color: white;
+}
+
+.shop-rating {
+    display: flex;
+    align-items: center;
+    color: #f8b400;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.rating {
+    color: rgb(255, 255, 255);
+    margin-right: 10px;
+}
+
+.rating-stars {
+    margin-right: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.rating-text {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Main content section */
+.col-md-12 {
+    background-color: rgba(255, 255, 255, 0.521);
+    margin: 20px auto; /* Auto margin to center horizontally */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 100%; /* Ensures it doesn't exceed full width */
+    width: 97%;
+}
+
+
+/* Product container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(33.33% - 20px);
+    max-width: 250px;
+    height: 300px;
+}
+
+.product-image {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 20px;
+    height: 40%;
+    overflow: hidden;
+}
+
+.product-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.updatebtn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #429545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 85%;
+}
+
+.updatebtn:hover {
+    background-color: #45a049;
+}
+
+
+@media screen and (max-width: 992px) {
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-card {
+        width: calc(50% - 20px);
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .product-card {
+        width: calc(100% - 20px);
+        max-width: none;
+    }
+}
+
+/* Button styles */
+.uploadbtn {
+    margin: 1rem;
+    margin-bottom: 30px;
+    position: relative;
+    float: inline-end;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 48px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 6px;
+    color: #36395a;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.uploadbtn:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    transform: translateY(-2px);
+}
+
+.uploadbtn:active {
+    box-shadow: inset 0px #d6d6e7;
+    transform: translateY(2px);
+}
+
+/* product count */
+.product-count {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgb(78, 141, 89);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+/* Category list */
+.category-list a {
+    display: block;
+    padding: 10px 5px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.category-list a:hover {
+    background-color: #e9ecef;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin-bottom: 10px;
+}
