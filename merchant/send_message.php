@@ -46,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $message_type = in_array($file_type, ['jpg', 'png', 'jpeg', 'gif']) ? 'image' : 'video';
 
             // Insert the message with media into the database
-            $stmt = $connection->prepare("INSERT INTO messages (sender_id, sender_type, receiver_id, receiver_type, message, media_path, message_type) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $connection->prepare("INSERT INTO messages (sender_id, sender_type, receiver_id, receiver_type, message, media_path, message_type) 
+                                            VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("isissss", $sender_id, $sender_type, $receiver_id, $receiver_type, $message, $media_path, $message_type);
 
             if ($stmt->execute()) {
