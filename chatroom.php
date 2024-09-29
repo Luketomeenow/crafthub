@@ -1,17 +1,17 @@
 <?php
 session_start(); // Start the session
-echo !empty($_SESSION['user_id']) ? "<script>console.log(".$_SESSION['user_id'].")</script>" : "<script>console.log('empty console')</script>";
+echo !empty($_SESSION['userID']) ? "<script>console.log('"."userID: ".$_SESSION['userID']."')</script>" : "<script>console.log('empty console')</script>";
 require 'dbcon.php'; // Your database connection
 
 // Check if the user is logged in
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'crafthub_user') {
+if (!isset($_SESSION['userID']) || $_SESSION['user_type'] != 'user') {
     // Redirect to login page or show an error message
     header('Location: login.php');
     exit();
 }
 
 // Get the current user's ID and type from the session
-$current_user_id = $_SESSION['user_id'];
+$current_user_id = $_SESSION['userID'];
 $current_user_type = $_SESSION['user_type']; // Should be 'user'
 
 // Get the chat partner's ID and type from URL parameters
@@ -24,7 +24,7 @@ if (!$chat_partner_id || !$chat_partner_type) {
 }
 
 if ($chat_partner_type == 'merchant') {
-  $stmt = mysqli_prepare($connection, "SELECT fname, lname FROM crafthub_user WHERE user_id = ?");
+  $stmt = mysqli_prepare($connection, "SELECT username FROM crafthub_merchant WHERE merchant_id = ?");
 
 if ($stmt) {
     // Bind the parameter
@@ -33,12 +33,12 @@ if ($stmt) {
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
         // Bind the result variables
-        mysqli_stmt_bind_result($stmt, $first_name, $last_name);
+        mysqli_stmt_bind_result($stmt, $chat_partner_name);
 
         // Fetch the result
         if (mysqli_stmt_fetch($stmt)) {
             // Combine the first name and last name
-            $chat_partner_name = $first_name . ' ' . $last_name;
+            $chat_partner_name = $chat_partner_name;
         } else {
             // Handle case where no result is returned
             $chat_partner_name = "Unknown User";
@@ -122,7 +122,7 @@ if ($stmt) {
                     </svg>
                 </label>
                 <a href="homepage.php">Home</a>
-                <a href="chatroom.php">Messages</a>
+                <a href="chatroom.php?chat_with_id=10&chat_with_type=merchant&merchant_id=10">Messages</a>
                 <a href="cart.php">Cart</a>
                 <a href="accountsettings.php">Account</a>
                 <a href="mypurchase.php">My Purchase</a>
@@ -142,31 +142,34 @@ if ($stmt) {
                         <input type="text" id="searchInput" class="form-control" placeholder="Search"> <!--=============== SEARCH ===============-->
                     </div>
                     <ul class="list-unstyled chat-list mt-2 mb-0" id="tabList">
-      <?php
-      // Include your database connectio
-      // Start the session if not already started
-      $result = mysqli_query($connection, "SELECT merchant_id, username FROM crafthub_merchant");
-  // Check if the result is valid
-  if ($result) {
-      while ($merchant = mysqli_fetch_assoc($result)) {
-          echo '<li class="clearfix">';
-          echo '<a href="chatroom.php?chat_with_id=' . $merchant['merchant_id'] . '&chat_with_type=merchant">';
-          echo '<img src="images/user.png" alt="avatar">';
-          echo '<div class="about">';
-          echo '<div class="name">' . htmlspecialchars($merchant['username']) . '</div>';
-          echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
-          echo '</div>';
-          echo '</a>';
-          echo '</li>';
-      }
-      // Free the result set
-      mysqli_free_result($result);
-  } else {
-      // Handle error
-      echo "Failed to retrieve results: " . mysqli_error($connection);
-  }
-      ?>
-  </ul>
+                        <?php
+                            // Include your database connectio
+                            // Start the session if not already started
+                            $result = mysqli_query($connection, "SELECT merchant_id, username FROM crafthub_merchant");
+                            // Check if the result is valid
+                            if ($result) {
+
+                            while ($merchant = mysqli_fetch_assoc($result)) {
+                                $isActive = $merchant['merchant_id'] == $chat_partner_id ? 'active' : '';
+
+                                echo '<li class="clearfix '.$isActive.'">';
+                                echo '<a href="chatroom.php?chat_with_id=' . $merchant['merchant_id'] . '&chat_with_type=merchant">';
+                                echo '<img src="images/user.png" alt="avatar">';
+                                echo '<div class="about">';
+                                echo '<div class="name">' . htmlspecialchars($merchant['username']) . '</div>';
+                                echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
+                                echo '</div>';
+                                echo '</a>';
+                                echo '</li>';
+                            }
+                            // Free the result set
+                            mysqli_free_result($result);
+                            } else {
+                                // Handle error
+                                echo "Failed to retrieve results: " . mysqli_error($connection);
+                            }
+                        ?>
+                    </ul>
                 </div>
                 <div class="chat"> <!--=============== CHAT CONTENT ===============-->
                     <div class="chat-header clearfix">
@@ -176,7 +179,7 @@ if ($stmt) {
                                     <img src="images/user.png" alt="avatar">
                                 </a>
                                 <div class="chat-about">
-                                    <h6 class="m-b-0"><?php echo htmlspecialchars($chat_partner_name); ?></h6>
+                                    <h5 class="m-b-0"><?php echo htmlspecialchars($chat_partner_name); ?></h5>
                                     <small>Last seen: 1 hour ago</small>
                                 </div>
                             </div>
@@ -198,8 +201,8 @@ if ($stmt) {
                             <!--=============== MESSAGES FOR TAB 1 WILL BE ADDED HERE ===============-->
                             <?php
 
-                            $merchant_id = $_GET['merchant_id']; // Merchant's user ID
-                            $customer_id = $_SESSION['user_id'];// Customer's user ID
+                            $merchant_id = $_GET['chat_with_id']; // Merchant's user ID
+                            $customer_id = $_SESSION['userID'];// Customer's user ID
 
                             // Fetch messages between the merchant and the customer
                             $stmt = $connection->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY created_at ASC");
@@ -268,6 +271,7 @@ if ($stmt) {
         .then(data => {
             var chatHistory = document.querySelector('.chat-history ul');
             chatHistory.innerHTML = '';
+            console.log('sender_id: '+sender_id+'sender_type: '+sender_type+'receiver_id: '+receiver_id+'receiver_type: '+receiver_type);
 
             data.messages.forEach(function(message) {
                 var direction = (message.sender_id == sender_id && message.sender_type == sender_type) ? 'outgoing' : 'incoming';

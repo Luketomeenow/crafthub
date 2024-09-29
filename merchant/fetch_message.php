@@ -1,6 +1,5 @@
 <?php
 require 'dbcon.php';
-header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Receive the raw post data.
@@ -12,10 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sender_type = $data['sender_type'];
     $receiver_id = $data['receiver_id'];
     $receiver_type = $data['receiver_type'];
-    echo $sender_id;
-    echo $sender_type;
-    echo $receiver_id;
-    echo $receiver_type;
 
     // Prepare the SQL query
     $query = "

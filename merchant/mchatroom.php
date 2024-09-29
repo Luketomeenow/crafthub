@@ -4,7 +4,7 @@ session_start(); // Start the session
 require 'dbcon.php'; // Your database connection
 
 // Check if the merchant is logged in
-if (!isset($_SESSION['merchant_id']) || $_SESSION['user_type'] != 'crafthub_merchant') {
+if (!isset($_SESSION['merchant_id']) || $_SESSION['user_type'] != 'merchant') {
     // Redirect to login page
     header('Location: /Crafthub/login.php'); // Adjust the path if needed
     exit();
@@ -12,7 +12,7 @@ if (!isset($_SESSION['merchant_id']) || $_SESSION['user_type'] != 'crafthub_merc
 
 // Get the current merchant's ID and type from the session
 $current_user_id = $_SESSION['merchant_id'];
-$current_user_type = $_SESSION['user_type']; // Should be 'crafthub_merchant'
+$current_user_type = $_SESSION['user_type']; // Should be 'merchant'
 
 // Get the chat partner's ID and type from URL parameters
 $chat_partner_id = isset($_GET['chat_with_id']) ? intval($_GET['chat_with_id']) : null;
@@ -105,7 +105,7 @@ if ($chat_partner_type == 'user') {
                 </svg>
             </label>
             <a href="mprofile.php">Profile</a>
-            <a href="mchatroom.php">Messages</a>
+            <a href="mchatroom.php?chat_with_id=4&chat_with_type=user&user_id=4">Messages</a>
             <a href="morders.php">Orders</a>
             <a href="maccount.php">Settings</a>
             <a href="index.php">Log out</a>
@@ -123,42 +123,65 @@ if ($chat_partner_type == 'user') {
                         <input type="text" id="searchInput" class="form-control" placeholder="Search">
                     </div>
                     <ul class="list-unstyled chat-list mt-2 mb-0" id="tabList">
-    <?php
-    // Include your database connection
+                        <?php
+                            // Include your database connection
 
-    // Start the session if not already started
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+                            // Start the session if not already started
+                            if (session_status() == PHP_SESSION_NONE) {
+                                session_start();
+                            }
 
-    // Get the current merchant's ID
-    $current_user_id = $_SESSION['merchant_id'];
+                            // Get the current merchant's ID
+                            $current_user_id = $_SESSION['merchant_id'];
 
-    // Fetch the list of users who have messaged the merchan
+                            // Fetch the list of users who have messaged the merchan
 
-  // Initialize the prepared statement
-    $result = mysqli_query($connection, "SELECT DISTINCT crafthub_user.user_id, crafthub_user.first_name, crafthub_user.last_name
-    FROM messages
-    INNER JOIN crafthub_user ON crafthub_user.user_id = messages.sender_id
-    WHERE messages.receiver_id = ? AND messages.receiver_type = 'merchant'
-    AND messages.sender_type = 'user'");
-  // Bind the parameter (receiver_id)
-  if ($result) {
-      while ($merchant = mysqli_fetch_assoc($result)) {
-      $user_name = $user['fname'] . ' ' . $user['lname'];
+                            // Initialize the prepared statement
+                            $stmt = mysqli_prepare($connection, "
+                                SELECT DISTINCT crafthub_user.user_id, crafthub_user.fname, crafthub_user.lname
+                                FROM messages
+                                LEFT JOIN crafthub_user ON crafthub_user.user_id = messages.sender_id
+                                WHERE messages.receiver_id = ? AND messages.receiver_type = 'merchant'
+                                AND messages.sender_type = 'user'
+                            ");
 
-      echo '<li class="clearfix">';
-      echo '<a href="mchatroom.php?chat_with_id=' . $user['user_id'] . '&chat_with_type=user">';
-      echo '<img src="images/user.png" alt="avatar">';
-      echo '<div class="about">';
-      echo '<div class="name">' . htmlspecialchars($user_name) . '</div>';
-      echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
-      echo '</div>';
-      echo '</a>';
-      echo '</li>';
-  }}
-    ?>
-</ul>
+                            // Check if the statement was prepared successfully
+                            if ($stmt) {
+                                // Bind the parameter (receiver_id) to the statement
+                                mysqli_stmt_bind_param($stmt, "i", $current_user_id);
+
+                                // Execute the statement
+                                mysqli_stmt_execute($stmt);
+
+                                // Get the result set from the executed statement
+                                $result = mysqli_stmt_get_result($stmt);
+
+                                // Fetch and display the results
+                                if ($result) {
+                                    while ($user = mysqli_fetch_assoc($result)) {
+                                        $user_name = $user['fname'] . ' ' . $user['lname'];
+                                        $isActive = $user['user_id'] == $chat_partner_id ? 'active' : '';
+
+                                        echo '<li class="clearfix '.$isActive.'">';
+                                        echo '<a href="mchatroom.php?chat_with_id=' . htmlspecialchars($user['user_id']) . '&chat_with_type=user">';
+                                        echo '<img src="images/user.png" alt="avatar">';
+                                        echo '<div class="about">';
+                                        echo '<div class="name">' . htmlspecialchars($user_name) . '</div>';
+                                        echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
+                                        echo '</div>';
+                                        echo '</a>';
+                                        echo '</li>';
+                                    }
+                                }
+
+                                // Close the statement
+                                mysqli_stmt_close($stmt);
+                            } else {
+                                // Handle errors in statement preparation
+                                echo "Error preparing the statement: " . mysqli_error($connection);
+                            }
+                        ?>
+                    </ul>
 
                 </div>
                 <div class="chat">
@@ -246,7 +269,7 @@ if ($chat_partner_type == 'user') {
         .then(data => {
             var chatHistory = document.querySelector('.chat-history ul');
             console.log(data.messages);
-            //chatHistory.innerHTML = '';
+            chatHistory.innerHTML = '';
 
             data.messages.forEach(function(message) {
                 var direction = (message.sender_id == sender_id && message.sender_type == sender_type) ? 'outgoing' : 'incoming';

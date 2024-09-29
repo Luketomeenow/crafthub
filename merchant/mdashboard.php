@@ -114,7 +114,7 @@ $countCancelledOrders = "SELECT COUNT(*) AS total_cancelled
             <a href="mprofile.php">Profile</a>
             <a href="">Messages</a>
             <a href="maccount.php">Settings</a>
-            <a href="index.php">Log out</a>
+            <a href="../index.php">Log out</a>
         </div>
     </nav>
 </div>

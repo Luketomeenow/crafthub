@@ -68,7 +68,7 @@ function showDefaultChat() {
 }
 
 // Call the function to show default chat and chat-history
-showDefaultChat();
+//showDefaultChat();
 
 // Function to switch tabs and clear chat histories
 function switchTab(event, tabIndex) {

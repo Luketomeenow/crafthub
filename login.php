@@ -17,12 +17,12 @@ if(isset($_POST['submit'])){
         die("Query Failed: ". mysqli_error($connection));
     }
 
-    if(mysqli_num_rows($result) > 0){
+    if(mysqli_num_rows($result) > 0){   
 
       if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_assoc($result);
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['user_type'] = 'crafthub_user';
+            $_SESSION['userID'] = $row['user_id'];
+            $_SESSION['user_type'] = 'user';
             echo "<script> alert('You Successfully Login!')
                     window.location.href = 'homepage.php';
                     </script>";
@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
         if(mysqli_num_rows($result1) == 1){
         $row1 = mysqli_fetch_assoc($result1);
             $_SESSION['merchant_id'] = $row1['merchant_id'];
-            $_SESSION['user_type'] = 'crafthub_merchant';
+            $_SESSION['user_type'] = 'merchant';
             echo "<script> alert('Successfully Login!')
                     window.location.href = 'merchant/mdashboard.php';
                     </script>";

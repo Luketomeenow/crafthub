@@ -30,7 +30,7 @@ body {
 .chat {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px); /* Adjust based on your header/footer height */
+    height: 600px;
     position: relative;
 }
 
@@ -82,6 +82,7 @@ body {
 
 .chat-app {
     height: 40vw;
+    position: relative;
 }
 .chat-app .people-list {
     width: 300px;

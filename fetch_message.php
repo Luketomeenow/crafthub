@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Bind the parameters to the prepared statement
     mysqli_stmt_bind_param(
         $stmt,
-        "isisiisi",
+        "isisisis",
         $sender_id, $sender_type, $receiver_id, $receiver_type,
         $receiver_id, $receiver_type, $sender_id, $sender_type
     );
