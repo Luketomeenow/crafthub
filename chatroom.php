@@ -271,11 +271,12 @@ if ($stmt) {
         .then(data => {
             var chatHistory = document.querySelector('.chat-history ul');
             chatHistory.innerHTML = '';
-            //console.log('sender_id: '+sender_id+'sender_type: '+sender_type+'receiver_id: '+receiver_id+'receiver_type: '+receiver_type);
+            console.log('sender_id: '+sender_id+'sender_type: '+sender_type+'receiver_id: '+receiver_id+'receiver_type: '+receiver_type);
 
             data.messages.forEach(function(message) {
                 var direction = (message.sender_id == sender_id && message.sender_type == sender_type) ? 'outgoing' : 'incoming';
-                addMessageToChatHistory(message.message_type === 'text' ? message.message : message.media_path, direction, message.message_type);
+                var mediaPath = direction == 'incoming' ? 'merchant/'+message.media_path : message.media_path;
+                addMessageToChatHistory(message.message_type === 'text' ? message.message : mediaPath, direction, message.message_type);
             });
         })
         .catch((error) => {

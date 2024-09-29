@@ -43,7 +43,7 @@ function loadMessages(customer_id, merchant_id) {
                     messageElement.appendChild(p);
                 } else if (msg.message_type === 'image') {
                     let img = document.createElement('img');
-                    img.src = msg.media_path;
+                    img.src = './merchant/'+msg.media_path;
                     messageElement.appendChild(img);
                 } else if (msg.message_type === 'video') {
                     let video = document.createElement('video');
