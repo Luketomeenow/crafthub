@@ -138,7 +138,7 @@ if ($service_rating_query && mysqli_num_rows($service_rating_query) > 0) {
                 <div class="flex4" id="icons">
                     <ul class="list-unstyled">
                       
-                        <li class="hideAtCustom mx-4 d-inline-block"><a href="chatroom.php"><i class="ri-chat-2-line"></i></a></li>
+                        <li class="hideAtCustom mx-4 d-inline-block"><a href="chatroom.php?chat_with_id=10&chat_with_type=merchant&merchant_id=10"><i class="ri-chat-2-line"></i></a></li>
                         <li class="hideAtCustom mx-4 d-inline-block"><a href="cart.php"><i class="ri-shopping-cart-line"></i></a></li>
                     </ul>
                 </div>
@@ -307,7 +307,7 @@ if ($service_rating_query && mysqli_num_rows($service_rating_query) > 0) {
                             <span><?php echo $fetch['shop_name']; ?></span>
                         </div> 
                         <div class="button-container d-flex align-items-center">
-                            <button type="submit" class="chat-btn">Chat Now</button>
+                            <a href="chatroom.php?chat_with_id=<?php echo $merchant_id;?>&chat_with_type=merchant&merchant_id=<?php echo $merchant_id;?>"><button type="submit" class="chat-btn">Chat Now</button></a>
                             <button type="submit" class="view-btn">View Shop</button>
                         </div>
                     </div> 

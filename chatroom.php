@@ -24,7 +24,7 @@ if (!$chat_partner_id || !$chat_partner_type) {
 }
 
 if ($chat_partner_type == 'merchant') {
-  $stmt = mysqli_prepare($connection, "SELECT username FROM crafthub_merchant WHERE merchant_id = ?");
+  $stmt = mysqli_prepare($connection, "SELECT shop_name FROM crafthub_merchant LEFT JOIN `crafthub_merchant_applicant` ON crafthub_merchant.reg_id = crafthub_merchant_applicant.reg_id WHERE merchant_id = ?");
 
 if ($stmt) {
     // Bind the parameter
@@ -37,7 +37,7 @@ if ($stmt) {
 
         // Fetch the result
         if (mysqli_stmt_fetch($stmt)) {
-            // Combine the first name and last name
+            
             $chat_partner_name = $chat_partner_name;
         } else {
             // Handle case where no result is returned
@@ -145,7 +145,7 @@ if ($stmt) {
                         <?php
                             // Include your database connectio
                             // Start the session if not already started
-                            $result = mysqli_query($connection, "SELECT merchant_id, username FROM crafthub_merchant");
+                            $result = mysqli_query($connection, "SELECT crafthub_merchant.merchant_id, crafthub_merchant_applicant.shop_name FROM crafthub_merchant LEFT JOIN `crafthub_merchant_applicant` ON crafthub_merchant.reg_id = crafthub_merchant_applicant.reg_id");
                             // Check if the result is valid
                             if ($result) {
 
@@ -156,7 +156,7 @@ if ($stmt) {
                                 echo '<a href="chatroom.php?chat_with_id=' . $merchant['merchant_id'] . '&chat_with_type=merchant">';
                                 echo '<img src="images/user.png" alt="avatar">';
                                 echo '<div class="about">';
-                                echo '<div class="name">' . htmlspecialchars($merchant['username']) . '</div>';
+                                echo '<div class="name">' . htmlspecialchars($merchant['shop_name']) . '</div>';
                                 echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
                                 echo '</div>';
                                 echo '</a>';
