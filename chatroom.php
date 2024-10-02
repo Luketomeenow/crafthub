@@ -143,27 +143,53 @@ if ($stmt) {
                     </div>
                     <ul class="list-unstyled chat-list mt-2 mb-0" id="tabList">
                         <?php
-                            // Include your database connectio
+                            // Include your database connection
+
                             // Start the session if not already started
-                            $result = mysqli_query($connection, "SELECT crafthub_merchant.merchant_id, crafthub_merchant_applicant.shop_name FROM crafthub_merchant LEFT JOIN `crafthub_merchant_applicant` ON crafthub_merchant.reg_id = crafthub_merchant_applicant.reg_id");
-                            // Check if the result is valid
-                            if ($result) {
-
-                            while ($merchant = mysqli_fetch_assoc($result)) {
-                                $isActive = $merchant['merchant_id'] == $chat_partner_id ? 'active' : '';
-
-                                echo '<li class="clearfix '.$isActive.'">';
-                                echo '<a href="chatroom.php?chat_with_id=' . $merchant['merchant_id'] . '&chat_with_type=merchant">';
-                                echo '<img src="images/user.png" alt="avatar">';
-                                echo '<div class="about">';
-                                echo '<div class="name">' . htmlspecialchars($merchant['shop_name']) . '</div>';
-                                echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
-                                echo '</div>';
-                                echo '</a>';
-                                echo '</li>';
+                            if (session_status() == PHP_SESSION_NONE) {
+                                session_start();
                             }
+
+                            $current_merchant_id = $_SESSION['userID'];
+
+                            //Fetch the list of merchant who have messaged the user
+
+                            $stmt = mysqli_prepare($connection, "
+                                SELECT DISTINCT crafthub_merchant.merchant_id, crafthub_merchant.username
+                                FROM messages
+                                LEFT JOIN crafthub_merchant ON crafthub_merchant.merchant_id = messages.sender_id
+                                WHERE messages.receiver_id = ? AND messages.receiver_type = 'user'
+                                AND messages.sender_type = 'merchant'
+                                ");
+
+                                if ($stmt) {
+                                    // Bind the parameter (receiver_id) to the statement
+                                    mysqli_stmt_bind_param($stmt, 'i', $current_merchant_id);
+
+                                    mysqli_stmt_execute($stmt);
+
+                                    $result = mysqli_stmt_get_result($stmt);
+                                
+                    
+                            if ($stmt) {
+                                while ($merchant = mysqli_fetch_assoc($result)) {
+                                    $user_name = $merchant['username'] . ' ';
+                                    $isActive = $merchant['merchant_id'] == $chat_partner_id ? 'active' : '';
+
+                                    echo '<li class="clearfix '.$isActive.'">';
+                                    echo '<a href="chatroom.php?chat_with_id=' . htmlspecialchars($merchant['merchant_id']) . '&chat_with_type=merchant">';
+                                    echo '<img src="images/user.png" alt="avatar">';
+                                    echo '<div class="about">';
+                                    echo '<div class="name">' . htmlspecialchars($user_name) . '</div>';
+                                    echo '<div class="status"> <i class="fa fa-circle online"></i> online </div>';
+                                    echo '</div>';
+                                    echo '</a>';
+                                    echo '</li>';
+                                }
+                            }
+                                
                             // Free the result set
-                            mysqli_free_result($result);
+                            mysqli_stmt_close($stmt);
                             } else {
                                 // Handle error
                                 echo "Failed to retrieve results: " . mysqli_error($connection);
